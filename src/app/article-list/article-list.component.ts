@@ -26,7 +26,6 @@ export class ArticleListComponent implements OnInit {
     // }
     this.articleManagerService.getAllArticles().subscribe((res: Article[]) => {
       this.articleList = res;
-      console.log(this.articleList);
     });
   }
 }

@@ -21,8 +21,8 @@ export class ArticleManagerService {
     return from(this.dbService.getAll<Article>('articles'));
   }
 
-  getArticleById(id: string): Observable<Article> {
-    return from(this.dbService.getByID<Article>('articles', id));
+  getArticleById(id: number): Observable<Article> {
+    return from(this.dbService.getByKey<Article>('articles', id));
   }
 
   // add return types

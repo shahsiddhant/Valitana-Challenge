@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { dbConfig } from './db-config';
+import { ArticleDetailComponent } from './article-detail/article-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, ArticleListComponent, ArticleListItemComponent],
+  declarations: [AppComponent, ArticleListComponent, ArticleListItemComponent, ArticleDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

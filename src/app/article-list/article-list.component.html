@@ -2,6 +2,6 @@
 
   <ng-container *ngFor="let article of articleList">
 
-    <app-article-list-item [article]=article></app-article-list-item>
+    <app-article-list-item [routerLink]="['/article', article.id]" [article]=article></app-article-list-item>
   </ng-container>
 </div>

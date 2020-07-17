@@ -10,7 +10,5 @@ export class ArticleListItemComponent implements OnInit {
   @Input() article: Article;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.article);
-  }
+  ngOnInit(): void {}
 }

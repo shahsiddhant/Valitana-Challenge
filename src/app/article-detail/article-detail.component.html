@@ -1,0 +1,16 @@
+<div class="article-detail-container">
+
+
+
+
+  <button [routerLink]="'/home'">Back</button>
+
+  <div *ngIf="currentArticle" class="article-details">
+
+
+    <!-- Convert title to form input when in edit mode -->
+    <span class="title">{{currentArticle.title}}</span>
+    <span>{{currentArticle.author}}</span>
+    <span>{{currentArticle.body}}</span>
+    <span>{{currentArticle.publishedOn | date:'short'}}</span>
+  </div>
