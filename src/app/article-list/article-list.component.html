@@ -1,1 +1,7 @@
-<app-article-list-item></app-article-list-item>
+<ng-container *ngIf="articleList.length">
+
+  <ng-container *ngFor="let article of articleList">
+
+    <app-article-list-item [article]=article></app-article-list-item>
+  </ng-container>
+</ng-container>

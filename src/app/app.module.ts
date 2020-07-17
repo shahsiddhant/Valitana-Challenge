@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +13,7 @@ import { dbConfig } from './db-config';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     NgxIndexedDBModule.forRoot(dbConfig),
   ],
   providers: [],
