@@ -21,7 +21,13 @@ import { dbConfig } from './db-config';
     AppRoutingModule,
     ReactiveFormsModule,
     NgxIndexedDBModule.forRoot(dbConfig),
-    QuillModule.forRoot(),
+    QuillModule.forRoot({
+      theme: 'bubble',
+      placeholder: 'Start here...',
+      modules: {
+        toolbar: [['bold', 'italic'], ['link']],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

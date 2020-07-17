@@ -4,6 +4,8 @@
 
 
   <button [routerLink]="'/home'">Back</button>
+  <button (click)="toggleEditMode()">Edit</button>
+  <button (click)="saveEverything()">Save</button>
 
   <div *ngIf="currentArticle" class="article-details">
 
@@ -11,8 +13,13 @@
     <!-- Convert title to form input when in edit mode -->
     <span class="title">{{currentArticle.title}}</span>
     <span>{{currentArticle.author}}</span>
-    <span>{{currentArticle.body}}</span>
+    <quill-view *ngIf="!inEditMode" [content]="currentArticle.body" format="text" theme="snow"></quill-view>
+    <quill-editor *ngIf="inEditMode" (onEditorCreated)="editorCreated($event)">
+    </quill-editor>
     <span>{{currentArticle.publishedOn | date:'short'}}</span>
 
-    <quill-editor></quill-editor>
+
+
+
   </div>
+</div>
