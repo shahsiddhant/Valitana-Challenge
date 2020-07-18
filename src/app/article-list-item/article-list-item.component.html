@@ -1,7 +1,18 @@
+<!-- TODO add when ready [ngClass]="{'unread': article?.read}" -->
 <div class="article-item-container">
 
-  <span class="title">{{article?.title}}</span>
-  <span class="author">{{article?.author}}</span>
-  <span class="body">{{article?.body}}</span>
-  <span class="published-date">{{article?.publishedOn | date:'short'}}</span>
+  <span class="actions-col">
+    <span>
+      <span class="title">{{article?.title}}</span>
+      <span class="row-2">
+        <span class="author">{{article?.author}}</span>
+        <span class="last-updated">{{article?.lastUpdated | dateAgo}}</span>
+      </span>
+    </span>
+    <span class="article-actions">
+      <button class="action-buttons"><img src="../../assets/contract.svg" alt=""></button>
+      <button class="action-buttons"><img src="../../assets/trash.svg" alt=""></button>
+      <button class="action-buttons"><img src="../../assets/next.svg" alt=""></button>
+    </span>
+  </span>
 </div>

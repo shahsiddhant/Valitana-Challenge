@@ -4,3 +4,14 @@
     <app-article-list-item [routerLink]="['/article', article.id]" [article]=article></app-article-list-item>
   </ng-container>
 </div>
+
+<!-- Add no article list -->
+<div *ngIf="!articleList.length">Seems like there are no articles</div>
+
+<!-- TODO add this when creating new article -->
+<!-- <div>
+  <span>
+    Create new article
+  </span>
+  <button>+</button>
+</div> -->

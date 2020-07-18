@@ -12,6 +12,7 @@ import {
   styleUrls: ['./article-detail.component.less'],
 })
 export class ArticleDetailComponent implements OnInit {
+  // TODO switch to enum - edit / create / view
   @Input() inEditMode = false;
   public currentArticle: Article;
   // no type from library

@@ -14,6 +14,7 @@ export class ArticleListComponent implements OnInit {
   constructor(private articleManagerService: ArticleManagerService) {}
 
   ngOnInit(): void {
+    // TODO remove
     // const article: Partial<Article> = {
     //   title: 'This is the title',
     //   author: 'sid',

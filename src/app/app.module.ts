@@ -10,6 +10,7 @@ import { ArticleListItemComponent } from './article-list-item/article-list-item.
 import { ArticleListComponent } from './article-list/article-list.component';
 import { dbConfig } from './db-config';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     ArticleListItemComponent,
     ArticleDetailComponent,
     SearchBarComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,
