@@ -12,7 +12,6 @@ import {
   styleUrls: ['./article-detail.component.less'],
 })
 export class ArticleDetailComponent implements OnInit {
-  // TODO rename
   @Input() inEditMode = false;
   public currentArticle: Article;
   // no type from library

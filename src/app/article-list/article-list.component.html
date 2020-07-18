@@ -1,7 +1,6 @@
+<app-search-bar></app-search-bar>
 <div *ngIf="articleList.length" class="list-container">
-
   <ng-container *ngFor="let article of articleList">
-
     <app-article-list-item [routerLink]="['/article', article.id]" [article]=article></app-article-list-item>
   </ng-container>
 </div>

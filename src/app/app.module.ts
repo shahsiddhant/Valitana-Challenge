@@ -9,12 +9,14 @@ import { ArticleDetailComponent } from './article-detail/article-detail.componen
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { dbConfig } from './db-config';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
     ArticleListComponent,
     ArticleListItemComponent,
     ArticleDetailComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,
