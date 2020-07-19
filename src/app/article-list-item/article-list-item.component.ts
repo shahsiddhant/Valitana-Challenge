@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Article } from '../services/article-manager.service';
+import { Router } from '@angular/router';
+import {
+  Article,
+  ArticleManagerService,
+  ArticleMode,
+} from '../services/article-manager.service';
 
 @Component({
   selector: 'app-article-list-item',
@@ -8,7 +13,33 @@ import { Article } from '../services/article-manager.service';
 })
 export class ArticleListItemComponent implements OnInit {
   @Input() article: Article;
-  constructor() {}
+  public confirmDelete = false;
+  constructor(
+    private rotuer: Router,
+    private articleManagerService: ArticleManagerService
+  ) {}
 
   ngOnInit(): void {}
+
+  editArticle(e: Event) {
+    e.stopPropagation();
+    // edit mode
+    this.rotuer.navigate(['article', this.article.id], {
+      queryParams: { mode: ArticleMode.EDIT },
+    });
+  }
+  deleteArticle(e: Event) {
+    e.stopPropagation();
+    // confirm and delete
+    this.confirmDelete = true;
+  }
+  cancelDelete(e: Event) {
+    e.stopPropagation();
+    this.confirmDelete = false;
+  }
+
+  deleteForSure(e: Event) {
+    e.stopPropagation();
+    this.articleManagerService.deleteArticle(this.article.id).subscribe();
+  }
 }

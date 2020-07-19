@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import {
   Article,
   ArticleManagerService,
+  ArticleMode,
 } from '../services/article-manager.service';
 
 @Component({
@@ -13,7 +14,8 @@ import {
 })
 export class ArticleDetailComponent implements OnInit {
   // TODO switch to enum - edit / create / view
-  @Input() inEditMode = false;
+  public mode: ArticleMode;
+
   public currentArticle: Article;
   // no type from library
   public editorInstance: any;
@@ -25,6 +27,7 @@ export class ArticleDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.mode = this.route.snapshot.queryParams.mode;
     this.articleManagerService
       .getArticleById(+this.route.snapshot.params.id)
       .subscribe((res: Article) => {
@@ -42,9 +45,9 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   toggleEditMode() {
-    this.inEditMode = true;
+    this.mode = ArticleMode.EDIT;
   }
   saveEverything() {
-    this.inEditMode = false;
+    this.mode = ArticleMode.VIEW;
   }
 }

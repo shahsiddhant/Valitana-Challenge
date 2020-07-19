@@ -11,11 +11,19 @@ export interface Article {
   body: string;
 }
 
+export enum ArticleMode {
+  EDIT = 'edit',
+  VIEW = 'view',
+  CREATE = 'create',
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleManagerService {
   constructor(private dbService: NgxIndexedDBService) {}
+
+  // TODO create an update pattern to update article list when delete/ updates happen
 
   getAllArticles(): Observable<Article[]> {
     return from(this.dbService.getAll<Article>('articles'));

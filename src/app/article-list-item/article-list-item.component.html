@@ -10,9 +10,16 @@
       </span>
     </span>
     <span class="article-actions">
-      <button class="action-buttons"><img src="../../assets/contract.svg" alt=""></button>
-      <button class="action-buttons"><img src="../../assets/trash.svg" alt=""></button>
-      <button class="action-buttons"><img src="../../assets/next.svg" alt=""></button>
+      <ng-container *ngIf="!confirmDelete">
+
+        <button (click)="editArticle($event)" class="action-buttons"><img src="../../assets/contract.svg"></button>
+        <button (click)="deleteArticle($event)" class="action-buttons"><img src="../../assets/trash.svg"></button>
+      </ng-container>
+      <ng-container *ngIf="confirmDelete">
+        <span>Are you sure?</span>
+        <button (click)="cancelDelete($event)" class="action-buttons"><img src="../../assets/cancel.svg"></button>
+        <button (click)="deleteForSure($event)" class="action-buttons"><img src="../../assets/check.svg"></button>
+      </ng-container>
     </span>
   </span>
 </div>
