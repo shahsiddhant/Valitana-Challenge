@@ -1,4 +1,8 @@
-<app-search-bar></app-search-bar>
+<span class="top-row">
+
+  <app-search-bar></app-search-bar>
+  <button class="add-more"><img src="../../assets/plus.svg"></button>
+</span>
 <div *ngIf="articleList.length" class="list-container">
   <ng-container *ngFor="let article of articleList">
     <app-article-list-item [routerLink]="['/article', article.id]" [article]=article></app-article-list-item>

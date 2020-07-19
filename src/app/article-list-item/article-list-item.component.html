@@ -11,12 +11,12 @@
     </span>
     <span class="article-actions">
       <ng-container *ngIf="!confirmDelete">
-
+        <!-- Future upgrades - abstract buttons for icon support -->
         <button (click)="editArticle($event)" class="action-buttons"><img src="../../assets/contract.svg"></button>
         <button (click)="deleteArticle($event)" class="action-buttons"><img src="../../assets/trash.svg"></button>
       </ng-container>
       <ng-container *ngIf="confirmDelete">
-        <span>Are you sure?</span>
+        <span class="confirm-message">Are you sure?</span>
         <button (click)="cancelDelete($event)" class="action-buttons"><img src="../../assets/cancel.svg"></button>
         <button (click)="deleteForSure($event)" class="action-buttons"><img src="../../assets/check.svg"></button>
       </ng-container>
