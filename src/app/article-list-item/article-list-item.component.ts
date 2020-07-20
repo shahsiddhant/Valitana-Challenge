@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   Article,
@@ -11,24 +11,21 @@ import {
   templateUrl: './article-list-item.component.html',
   styleUrls: ['./article-list-item.component.less'],
 })
-export class ArticleListItemComponent implements OnInit {
-  @Input() article: Article;
+export class ArticleListItemComponent {
+  @Input() public article: Article;
   public confirmDelete = false;
   constructor(
     private router: Router,
     private articleManagerService: ArticleManagerService
   ) {}
 
-  ngOnInit(): void {}
-
   editArticle() {
-    // edit mode
     this.router.navigate(['article', this.article.id], {
       queryParams: { mode: ArticleMode.EDIT },
     });
   }
-  deleteArticle() {
-    // confirm and delete
+  confirmDeleteArticle() {
+    // confirm
     this.confirmDelete = true;
   }
   cancelDelete() {
