@@ -47,7 +47,7 @@ export class ArticleManagerService {
     article = {
       ...article,
       lastUpdated: new Date(),
-    };
+    } as Article;
     return from(this.dbService.update<Article>('articles', article));
   }
 

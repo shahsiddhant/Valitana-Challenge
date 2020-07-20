@@ -2,23 +2,22 @@
 <div class="article-item-container">
 
   <span class="actions-col">
-    <span>
+    <span class="article-details">
       <span class="title">{{article?.title}}</span>
-      <span class="row-2">
-        <span class="author">{{article?.author}}</span>
-        <span class="last-updated">{{article?.lastUpdated | dateAgo}}</span>
-      </span>
+      <span class="last-updated">{{article?.lastUpdated | dateAgo}}</span>
     </span>
     <span class="article-actions">
       <ng-container *ngIf="!confirmDelete">
         <!-- Future upgrades - abstract buttons for icon support -->
-        <button (click)="editArticle($event)" class="action-buttons"><img src="../../assets/contract.svg"></button>
-        <button (click)="deleteArticle($event)" class="action-buttons"><img src="../../assets/trash.svg"></button>
+        <button (click)="editArticle()" title="Edit" class="icon-buttons"><img src="../../assets/contract.svg"></button>
+        <button (click)="deleteArticle()" title="Delete" class="icon-buttons"><img src="../../assets/trash.svg"></button>
+        <button [routerLink]="['/article', article.id]" [queryParams]="{mode: 'view'}" title="Confirm" class="icon-buttons"><img
+            src="../../assets/next.svg"></button>
       </ng-container>
       <ng-container *ngIf="confirmDelete">
         <span class="confirm-message">Are you sure?</span>
-        <button (click)="cancelDelete($event)" class="action-buttons"><img src="../../assets/cancel.svg"></button>
-        <button (click)="deleteForSure($event)" class="action-buttons"><img src="../../assets/check.svg"></button>
+        <button (click)="cancelDelete()" title="Cancel" class="icon-buttons"><img src="../../assets/cancel.svg"></button>
+        <button (click)="deleteForSure()" title="Confirm" class="icon-buttons"><img src="../../assets/check.svg"></button>
       </ng-container>
     </span>
   </span>

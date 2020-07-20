@@ -3,13 +3,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxIndexedDBModule } from 'ngx-indexed-db';
 import { QuillModule } from 'ngx-quill';
+import { SortablejsModule } from 'ngx-sortablejs';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleDetailComponent } from './article-detail/article-detail.component';
 import { ArticleListItemComponent } from './article-list-item/article-list-item.component';
 import { ArticleListComponent } from './article-list/article-list.component';
 import { dbConfig } from './db-config';
-import { SearchBarComponent } from './search-bar/search-bar.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 @NgModule({
   declarations: [
@@ -17,7 +17,6 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
     ArticleListComponent,
     ArticleListItemComponent,
     ArticleDetailComponent,
-    SearchBarComponent,
     DateAgoPipe,
   ],
   imports: [
@@ -26,12 +25,13 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
     ReactiveFormsModule,
     NgxIndexedDBModule.forRoot(dbConfig),
     QuillModule.forRoot({
-      theme: 'bubble',
-      placeholder: 'Start here...',
+      theme: 'snow',
+      placeholder: 'Start typing...',
       modules: {
         toolbar: [['bold', 'italic'], ['link']],
       },
     }),
+    SortablejsModule.forRoot({}),
   ],
   providers: [],
   bootstrap: [AppComponent],

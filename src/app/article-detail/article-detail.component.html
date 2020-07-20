@@ -1,25 +1,36 @@
 <div class="article-detail-container">
+  <span class="action-buttons-container">
+    <span class="left-action-buttons">
+
+      <button class="icon-buttons" [routerLink]="'/home'" title="Back"><img src="../../assets/left-arrow.svg"></button>
+    </span>
+    <span class="right-action-buttons">
+
+      <button class="icon-buttons" *ngIf="mode === ArticleMode.VIEW" title="Edit" (click)="toggleEditMode()"><img
+          src="../../assets/contract.svg"></button>
+      <button class="icon-buttons" *ngIf="mode !== ArticleMode.VIEW" title="Save" (click)="saveEverything()"><img
+          src="../../assets/save.svg"></button>
+      <button class="icon-buttons" *ngIf="mode === ArticleMode.EDIT" title="Cancel" (click)="cancelEdit()"><img
+          src="../../assets/cancel.svg"></button>
+    </span>
+  </span>
+
+  <div class="article-details">
+
+    <ng-container *ngIf="mode === ArticleMode.VIEW">
+      <span class="title">{{currentArticle?.title}}</span>
+      <span class="date-ago">{{currentArticle?.lastUpdated | dateAgo}}</span>
+      <quill-view [content]="currentArticle?.body" format="text" theme="snow"></quill-view>
+    </ng-container>
 
 
-
-
-  <button [routerLink]="'/home'">Back</button>
-  <button *ngIf="mode !== 'edit'" (click)="toggleEditMode()">Edit</button>
-  <button *ngIf="mode !== 'view'" (click)="saveEverything()">Save</button>
-
-  <div *ngIf="currentArticle" class="article-details">
-
-
-    <!-- Convert title to form input when in edit mode -->
-    <span class="title">{{currentArticle.title}}</span>
-    <span>{{currentArticle.author}}</span>
-    <quill-view *ngIf="mode !== 'edit'" [content]="currentArticle.body" format="text" theme="snow"></quill-view>
-    <quill-editor *ngIf="mode === 'edit'" theme="snow" (onEditorCreated)="editorCreated($event)">
-    </quill-editor>
-    <span>{{currentArticle.publishedOn | date:'short'}}</span>
-
-
-
+    <ng-container *ngIf="mode !== ArticleMode.VIEW">
+      <input class="title" [ngClass]="{'invalid': title.invalid && title.dirty}" type="text" [formControl]="title"
+        placeholder="Enter a title...">
+      <span class="invalid-text" *ngIf="title.invalid && title.dirty">Please enter a title</span>
+      <quill-editor theme="snow" (onEditorCreated)="editorCreated($event)" (onContentChanged)="editorContentChanged($event)">
+      </quill-editor>
+    </ng-container>
 
   </div>
 </div>

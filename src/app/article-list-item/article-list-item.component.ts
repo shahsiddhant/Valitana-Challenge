@@ -15,31 +15,30 @@ export class ArticleListItemComponent implements OnInit {
   @Input() article: Article;
   public confirmDelete = false;
   constructor(
-    private rotuer: Router,
+    private router: Router,
     private articleManagerService: ArticleManagerService
   ) {}
 
   ngOnInit(): void {}
 
-  editArticle(e: Event) {
-    e.stopPropagation();
+  editArticle() {
     // edit mode
-    this.rotuer.navigate(['article', this.article.id], {
+    this.router.navigate(['article', this.article.id], {
       queryParams: { mode: ArticleMode.EDIT },
     });
   }
-  deleteArticle(e: Event) {
-    e.stopPropagation();
+  deleteArticle() {
     // confirm and delete
     this.confirmDelete = true;
   }
-  cancelDelete(e: Event) {
-    e.stopPropagation();
+  cancelDelete() {
     this.confirmDelete = false;
   }
 
-  deleteForSure(e: Event) {
-    e.stopPropagation();
-    this.articleManagerService.deleteArticle(this.article.id).subscribe();
+  deleteForSure() {
+    this.articleManagerService.deleteArticle(this.article.id).subscribe(() => {
+      // can acheive better data reload handling with rx but not enough time to set up.
+      window.location.reload();
+    });
   }
 }

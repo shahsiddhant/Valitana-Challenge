@@ -1,21 +1,35 @@
 <span class="top-row">
 
-  <app-search-bar></app-search-bar>
-  <button class="add-more"><img src="../../assets/plus.svg"></button>
+  <input type="text" [formControl]="searchBar" placeholder="Seach for a title...">
+
+  <button title="Add" class="icon-buttons" [routerLink]="['/article']" [queryParams]="{mode: 'create'}"><img
+      src="../../assets/plus.svg"></button>
 </span>
-<div *ngIf="articleList.length" class="list-container">
-  <ng-container *ngFor="let article of articleList">
-    <app-article-list-item [routerLink]="['/article', article.id]" [article]=article></app-article-list-item>
-  </ng-container>
+<div *ngIf="articleMap.length" class="list-container">
+
+  <div [sortablejs]="articleMap" [sortablejsOptions]="sortableOptions">
+
+    <ng-container *ngFor=" let root of articleMap">
+      <app-article-list-item class="draggable" [article]=root.article>
+      </app-article-list-item>
+
+      <div [sortablejs]="root.children" [sortablejsOptions]="sortableOptions">
+        <ng-container *ngFor="let childMap of root.children">
+          <app-article-list-item class="draggable child" [article]=childMap.article>
+          </app-article-list-item>
+        </ng-container>
+      </div>
+
+    </ng-container>
+  </div>
 </div>
 
 <!-- Add no article list -->
-<div *ngIf="!articleList.length">Seems like there are no articles</div>
-
-<!-- TODO add this when creating new article -->
-<!-- <div>
+<div class="no-articles" *ngIf="!articleList.length">
   <span>
-    Create new article
+    Seems like there are no articles.
   </span>
-  <button>+</button>
-</div> -->
+  <span>
+    Click the plus button to create new articles
+  </span>
+</div>
