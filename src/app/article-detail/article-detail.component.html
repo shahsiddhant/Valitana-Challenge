@@ -23,7 +23,6 @@
       <quill-view [content]="currentArticle?.body" format="text" theme="snow"></quill-view>
     </ng-container>
 
-
     <ng-container *ngIf="mode !== ArticleMode.VIEW">
       <input class="title" [ngClass]="{'invalid': title.invalid && title.dirty}" type="text" [formControl]="title"
         placeholder="Enter a title...">

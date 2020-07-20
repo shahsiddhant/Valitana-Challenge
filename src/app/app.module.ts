@@ -28,7 +28,7 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
       theme: 'snow',
       placeholder: 'Start typing...',
       modules: {
-        toolbar: [['bold', 'italic'], ['link']],
+        toolbar: [['bold', 'italic'], ['link']], // We can add a lot more options for the toolbar
       },
     }),
     SortablejsModule.forRoot({}),

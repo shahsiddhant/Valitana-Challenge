@@ -11,7 +11,7 @@
         <!-- Future upgrades - abstract buttons for icon support -->
         <button (click)="editArticle()" title="Edit" class="icon-buttons"><img src="../../assets/contract.svg"></button>
         <button (click)="deleteArticle()" title="Delete" class="icon-buttons"><img src="../../assets/trash.svg"></button>
-        <button [routerLink]="['/article', article.id]" [queryParams]="{mode: 'view'}" title="Confirm" class="icon-buttons"><img
+        <button [routerLink]="['/article', article.id]" [queryParams]="{mode: 'view'}" title="Details" class="icon-buttons"><img
             src="../../assets/next.svg"></button>
       </ng-container>
       <ng-container *ngIf="confirmDelete">
