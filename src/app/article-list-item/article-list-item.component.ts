@@ -24,10 +24,11 @@ export class ArticleListItemComponent {
       queryParams: { mode: ArticleMode.EDIT },
     });
   }
+
   confirmDeleteArticle() {
-    // confirm
     this.confirmDelete = true;
   }
+
   cancelDelete() {
     this.confirmDelete = false;
   }
