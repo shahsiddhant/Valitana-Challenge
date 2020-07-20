@@ -5,26 +5,12 @@
   <button title="Add" class="icon-buttons" [routerLink]="['/article']" [queryParams]="{mode: 'create'}"><img
       src="../../assets/plus.svg"></button>
 </span>
-<div *ngIf="articleMap.length" class="list-container">
 
-  <div [sortablejs]="articleMap" [sortablejsOptions]="sortableOptions">
-
-    <ng-container *ngFor=" let root of articleMap">
-      <app-article-list-item class="draggable" [article]=root.article>
-      </app-article-list-item>
-
-      <div [sortablejs]="root.children" [sortablejsOptions]="sortableOptions">
-        <ng-container *ngFor="let childMap of root.children">
-          <app-article-list-item class="draggable child" [article]=childMap.article>
-          </app-article-list-item>
-        </ng-container>
-      </div>
-
-    </ng-container>
-  </div>
+<div *ngIf="articleList.length" class="list-container">
+  <app-article-list-item *ngFor=" let article of articleList" [article]=article>
+  </app-article-list-item>
 </div>
 
-<!-- Add no article list -->
 <div class="no-articles" *ngIf="!articleList.length">
   <span>
     Seems like there are no articles.

@@ -9,7 +9,6 @@ export const dbConfig: DBConfig = {
       storeConfig: { keyPath: 'id', autoIncrement: true },
       storeSchema: [
         { name: 'title', keypath: 'title', options: { unique: false } },
-        { name: 'author', keypath: 'author', options: { unique: false } },
         {
           name: 'publishedOn',
           keypath: 'publishedOn',

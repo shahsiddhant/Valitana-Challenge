@@ -5,7 +5,6 @@ import { from, Observable } from 'rxjs';
 export interface Article {
   id?: number;
   title: string;
-  author: string;
   publishedOn: Date;
   lastUpdated: Date;
   body: string;
@@ -16,14 +15,13 @@ export enum ArticleMode {
   VIEW = 'view',
   CREATE = 'create',
 }
-
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleManagerService {
   constructor(private dbService: NgxIndexedDBService) {}
 
-  // TODO create an update pattern to update article list when delete/ updates happen
+  // Future upgrades - create an update pattern to update article list when delete/ updates happen
 
   getAllArticles(): Observable<Article[]> {
     return from(this.dbService.getAll<Article>('articles'));
